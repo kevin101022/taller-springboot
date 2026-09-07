@@ -9,6 +9,8 @@
 <div class="container mt-5">
     <h2 th:text="${carro.id == null ? 'Nuevo Carro' : 'Editar Carro'}"></h2>
     
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+    
     <!-- Enlace al controlador con Thymeleaf -->
     <form th:action="@{/carros/guardar}" th:object="${carro}" method="post" class="mt-4">
         <input type="hidden" th:field="*{id}" />

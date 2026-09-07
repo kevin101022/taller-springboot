@@ -8,6 +8,7 @@
 <body>
 <div class="container mt-5">
     <h2 th:text="${chofer.id == null ? 'Nuevo Chofer' : 'Editar Chofer'}"></h2>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
     
     <form th:action="@{/choferes/guardar}" th:object="${chofer}" method="post" class="mt-4">
         <input type="hidden" th:field="*{id}" />
