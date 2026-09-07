@@ -23,7 +23,16 @@ public class ChoferService {
     }
 
     public void guardarChofer(Chofer chofer) {
-        // Podríamos agregar una regla para que la licencia sea única
+        // Regla de Negocio: El teléfono solo puede contener números
+        if (chofer.getTelefono() != null && !chofer.getTelefono().matches("\\d+")) {
+            throw new IllegalArgumentException("El número de teléfono solo puede contener números (sin letras, espacios ni símbolos).");
+        }
+        
+        // Regla de Negocio: La licencia solo puede contener números
+        if (chofer.getLicencia() != null && !chofer.getLicencia().matches("\\d+")) {
+            throw new IllegalArgumentException("El número de licencia solo puede contener números.");
+        }
+
         choferRepository.save(chofer);
     }
 
